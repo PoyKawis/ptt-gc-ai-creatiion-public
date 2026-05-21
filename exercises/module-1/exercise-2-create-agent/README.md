@@ -40,14 +40,14 @@
    You are a helpful HR assistant for CPAll employees. You help employees understand expense claim policy, and provide organization news or announcements. 
    ```
 
-2. Copilot Studio จะตอบรับและสรุปขอบเขตการทำงานของ Agent ให้ จากนั้นจะมีการกำหนดชื่อชั่วคราวให้ Agent นี้ เช่น "HR Assistant" หรือ "CPAll HR Bot" ขึ้นอยู่กับระบบ
+2. Copilot Studio จะตอบรับและสรุปขอบเขตการทำงานของ Agent ให้ จากนั้นจะมีการกำหนดชื่อชั่วคราวให้ Agent นี้ เช่น "HR Assistant" หรือ "HR Bot" ขึ้นอยู่กับระบบ
 
    ![ภาพสรุปหน้าที่ Agent](./images/draft-agent.png)
 
 3. กดปุ่ม Edit และตั้งชื่อ Agent ว่า:
 
    ```
-   CPAll HR Assistant [ชื่อตัวเอง]
+   PTT HR Assistant [ชื่อตัวเอง]
    ```
 
 4. กด ปุ่ม Save และรอให้ระบบยืนยัน
