@@ -31,13 +31,15 @@ flowchart TD
    Additional prompt
    ```
 
-3. แก้ prompt เดิมให้รองรับ input ใหม่นี้ โดยเพิ่ม context ลักษณะนี้เข้าไป:
+3. แก้ prompt เดิมให้รองรับ input ใหม่นี้ โดยเพิ่ม context ลักษณะนี้เข้าไป
+   ⚠️ ด้านล่างของหัวข้อ **Instruction** และหัวข้อ **Output format rules**:
    ```text
-   - Additional prompt from user, use this as first priority: {{Topic.AdditionalPrompt}}
+   Additional Instructions:
+   - Additional request from user, use this as first priority: {{Topic.AdditionalPrompt}}
    ```
   ![alt text](2026-06-03_14-56-47.png)
-4. ทดสอบสั้นๆ ว่าเมื่อเรายังไม่มีการส่งอะไรลงไปใน additional prompt ระบบยังสร้างผลลัพธ์เวอร์ชันแรกได้ตามปกติ
-5. บันทึก Prompt node
+1. ทดสอบสั้นๆ ว่าเมื่อเรายังไม่มีการส่งอะไรลงไปใน additional prompt ระบบยังสร้างผลลัพธ์เวอร์ชันแรกได้ตามปกติ
+2. บันทึก Prompt node
 
 ---
 
@@ -110,16 +112,46 @@ flowchart TD
       ```
       User's entire response
       ```
-   4. Save user response as: (ตรงนี้ให้เลือกตัวแปรเดิมที่สร้างไว้ก่อนหน้านี้ที่ชื่อว่า `AdditionalPrompt`)
+   4. Save user response as: (ในขั้นตอนนี้ให้สร้างตัวแปรใหม่สำหรับเก็บคำตอบชั่วคราวก่อน)
       ```
-      AdditionalPrompt
+      UserRequest
       ```
    ![alt text](2026-06-03_15-27-44.png)
 
-3. 
-4. ส่งค่าตัวแปรนี้กลับเข้า node `Analyze financial data` ตัวเดิม เพื่อสร้างผลลัพธ์รอบใหม่
-5. หลังจาก Prompt node ทำงานเสร็จ ให้เพิ่ม **Message** node เพื่อแสดงผลลัพธ์เวอร์ชันแก้ไขในแชต
-6. วนกลับไปถามอีกครั้งว่าต้องการแก้ไขต่อหรือไม่
+3. ใต้ node `Ask for Additional Prompt` ในเส้นทาง **Request revision (Yes)** ให้เพิ่ม **Set a variable value** node เพื่อส่งค่าจากคำตอบล่าสุดกลับไปเก็บในตัวแปรหลัก `AdditionalPrompt` ก่อนวนกลับเข้า Prompt node อีกครั้ง
+   1. เส้นทางคลิก:
+      ```
+      Add node > Variable management > Set a variable value
+      ```
+   2. Node name:
+      ```
+      Update Additional Prompt from User Request
+      ```
+   3. Set variable:
+      ```
+      UserRequest
+      ```
+   4. To value:
+      ```
+      AdditionalPrompt
+      ```
+
+4. ใต้ node `Update Additional Prompt from revision` ให้เพิ่ม node สำหรับย้อนกลับไปประมวลผลใหม่ด้วยเส้นทางคลิก:
+   **Add node** > **Topic management** > **Go to step**
+5. ใน `Go to step` ให้เลือกปลายทางเป็น node `Analyze financial data` (เลือกชื่อให้ตรงตัวสะกด)
+
+> 💡 Notes: รอบถัดไป Prompt node เดิมจะถูกเรียกซ้ำ โดยรอบนี้ `AdditionalPrompt` ถูกอัปเดตจาก `Topic.RevisionDetail` แล้ว จึงสามารถปรับ draft ตาม feedback ล่าสุดได้
+
+1. กด **Save** แล้วทดสอบใน **Test** panel ตามลำดับนี้:
+   1. เริ่มจากการสร้าง draft ครั้งแรก
+   2. ตอบ `Yes` ที่คำถามแก้ไข
+   3. กรอก feedback ใหม่
+   ```
+   add 5 interesting insights in the analysis and make it more concise for executives
+   ```
+   4. สังเกตว่า flow วิ่งผ่าน `Go to step` กลับไป `Analyze financial data` และผลลัพธ์เปลี่ยนตาม `AdditionalPrompt`
+2. หลังจาก Prompt node ทำงานเสร็จ ให้เพิ่ม **Message** node เพื่อแสดงผลลัพธ์เวอร์ชันแก้ไขในแชต
+3. วนกลับไปถามอีกครั้งว่าต้องการแก้ไขต่อหรือไม่
 
 > 💡 **Tip:** ตั้งชื่อ node ให้สื่อความชัดเจน เช่น `Ask_Revision_Intent`, `Capture_Additional_Prompt`, `Show_Revised_Analysis`
 
@@ -127,9 +159,8 @@ flowchart TD
 
 ## Practice 4: ปิดงานเมื่อผู้ใช้ยอมรับผลลัพธ์
 
-1. ในเส้นทาง "ไม่ต้องการแก้ไข" ให้ส่ง Message ยืนยันว่า draft นี้เป็น final
-2. ใช้ **End current topic** หรือ redirect ไป topic ปิดบทสนทนา
-3. ถ้าต้องการ ให้เก็บสถานะ final ลงตัวแปร เช่น `Topic.ReportApproved = true`
+1. ในเส้นทาง **Finalize report (No)** ให้ส่ง Message ยืนยันว่า draft นี้เป็น final
+2. ใช้ **End current topic**  ปิดบทสนทนา
 
 ---
 
