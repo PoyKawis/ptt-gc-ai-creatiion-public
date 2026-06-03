@@ -59,7 +59,7 @@ flowchart TD
    Analyze financial data from uploaded excel file
    ```
 3. เข้า Prompt editor ของ node นี้ แล้วสังเกตส่วนที่ชื่อ **Prompt assistant**
-   ![alt text](2026-06-02_18-31-10.png)
+   ![open prompt assistant](./images/open-prompt-assistant.png)
 4. ศึกษาและใช้ prompt ด้านล่างนี้ใน Prompt assistant และกดส่ง prompt:
 
    ```
@@ -67,7 +67,7 @@ flowchart TD
    ```
 
 5. ตรวจสอบผลลัพธ์ของการสร้าง prompt ถ้า prompt ที่สร้างมีตัวแปร input ดังภาพ (แต่ไม่จำเป็นต้องมี เราสามารถใส่เพิ่มเองได้ในขั้นตอนถัดไป)
-   ![alt text](2026-06-02_18-44-39.png)
+   ![prompt input preview](./images/prompt-input-preview.png)
 6. ไม่ว่าจะได้ prompt แบบไหน หลังจาก Assistant สร้าง prompt แล้ว **ให้ใช้ prompt ด้านล่างนี้ เพื่อให้เหมือนกันในการทำ exercise**:
 
    ```text
@@ -116,27 +116,29 @@ flowchart TD
       2. `{{Topic.BusinessUnit}}` → `Business unit`
       3. `{{Topic.ReportFormat}}` → `Preferred report format`
    
-   ![alt text](2026-06-02_18-35-58.png)
+   ![replace variable with text](./images/replace-variable-with-text.png)
 8. สำหรับตัวแปร `{{Topic.SourceFileName}}` ให้แก้เป็น `Financial data file` โดยทำตามขั้นตอนเดียวกันกับด้านบน แต่ให้เลือกประเภทตัวแปรเป็น **File** แทน Text
-   ![alt text](2026-06-03_13-30-33.png)
+   ![set financial file input](./images/set-financial-file-input.png)
 
 > 💡 **Tip:** เราสามารถใช้ปุ่ม **+ Add Content** ในการกำหนดตัวแปร input ต่างๆ ได้เช่นกัน
-> ![alt text](2026-06-03_13-34-15.png)
+> ![add content button](./images/add-content-button.png)
 
 
 9. จากด้านบนของ Instructions ให้กดปุ่ม More options (...) แล้วเลือก **Setting** 
-   ![alt text](2026-06-02_18-48-50.png)
+   ![open prompt settings](./images/open-prompt-settings.png)
 10. เปิดตัวเลือก **Code Interpreter** และกดปุ่ม **x** เพื่อปิดหน้าต่าง Setting
-    ![alt text](2026-06-02_18-49-06.png)
+   ![enable code interpreter](./images/enable-code-interpreter.png)
 
-11. ให้สังเกตปุ่มที่แสดงจำนวน input ด้านล่างนี้ ซึ่งจะบอกเราว่าตอนนี้ prompt นี้มีตัวแปร input อะไรบ้าง ถ้ากดดูก็จะสามารถบอกได้ว่าเป็นประเภทไหน (Text, File ฯลฯ) ในที่นี้ให้กดเปิด และเลือกใส่ค่าทดสอบสำหรับตัวแปร input ทั้งหมดเพื่อทดสอบ prompt นี้ก่อน เช่น
+> ⚠️ **Note:** การเปิด Code Interpreter จะช่วยให้ prompt นี้สามารถวิเคราะห์ข้อมูลจากไฟล์ Excel ได้ แต่จะใช้เวลาในการประมวลผลนานกว่าปกติ
+
+1.  ให้สังเกตปุ่มที่แสดงจำนวน input ด้านล่างนี้ ซึ่งจะบอกเราว่าตอนนี้ prompt นี้มีตัวแปร input อะไรบ้าง ถ้ากดดูก็จะสามารถบอกได้ว่าเป็นประเภทไหน (Text, File ฯลฯ) ในที่นี้ให้กดเปิด และเลือกใส่ค่าทดสอบสำหรับตัวแปร input ทั้งหมดเพื่อทดสอบ prompt นี้ก่อน เช่น
     - Report period: `May 2026`
     - Business unit: `Olefins`
     - Preferred report format: `Executive Summary`
     - Financial data file: อัปโหลดไฟล์ `CPALL-Monthly-Financial-Report-May2026.xlsx` 
-12. กดปิดหน้าต่าง input แล้วกด **Save** เพื่อบันทึก prompt นี้
-13. กดปุ่ม Test ด้านบนขวาใน Prompt editor เพื่อทดสอบ prompt นี้ด้วยค่าที่ใส่ไว้ในขั้นตอนที่แล้ว
-14. ตรวจสอบผลลัพธ์ที่ได้ว่ามีส่วนสรุป, KPI summary, Key Risk, และ Notes ครบถ้วนตาม prompt หรือไม่
+2.  กดปิดหน้าต่าง input แล้วกด **Save** เพื่อบันทึก prompt นี้
+3.  กดปุ่ม Test ด้านบนขวาใน Prompt editor เพื่อทดสอบ prompt นี้ด้วยค่าที่ใส่ไว้ในขั้นตอนที่แล้ว
+4.  ตรวจสอบผลลัพธ์ที่ได้ว่ามีส่วนสรุป, KPI summary, Key Risk, และ Notes ครบถ้วนตาม prompt หรือไม่
 
 > ⚠️ **Note:** ในการทดสอบครั้งแรก อาจจะได้ผลลัพธ์ที่ไม่สมบูรณ์หรือมีข้อความแจ้งว่าข้อมูลไม่ครบ ซึ่งเป็นไปตามเงื่อนไขใน prompt ที่เราตั้งไว้ ให้ทดสอบปรับ Model ให้มีขนาดใหญ่ถึง เช่นจาก GPT-4mini เป็น GPT-4.1 เพื่อดูว่าผลลัพธ์มีความสมบูรณ์มากขึ้นหรือไม่
 
@@ -146,7 +148,7 @@ flowchart TD
     Analyze financial data
     ```
 17. คลิกตั้งชื่อตัวแปร Output ของ Prompt node > เลือก **Create new variable** และตั้งชื่อเป็น `FinancialAnalysisResult` เพื่อให้เราสามารถเรียกใช้ผลลัพธ์นี้ในขั้นตอนถัดไปได้
-![alt text](2026-06-03_14-26-02.png)
+![create output variable](./images/create-output-variable.png)
 
 18. กด **Save** เพื่อบันทึกการเปลี่ยนแปลงทั้งหมด
 ---
@@ -155,7 +157,7 @@ flowchart TD
 
 1. เพิ่ม **Message** node ถัดจาก New Prompt node
 2. ในข้อความของ Message node ให้แทรก output ของ node `Analyze financial data` เพื่อให้ผลวิเคราะห์ที่ Prompt สร้างขึ้นถูกส่งกลับมาที่แชตโดยตรง
-   ![alt text](2026-06-03_14-43-20.png)
+   ![insert analysis output](./images/insert-analysis-output.png)
 
 3. ตั้งชื่อ node นี้ให้สื่อความหมาย เช่น:
 

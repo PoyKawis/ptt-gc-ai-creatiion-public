@@ -34,7 +34,7 @@
 
 ---
 
-## Practice 4: Smoke test Agent ก่อนเริ่มสร้าง Topic
+## Practice 3: Smoke test Agent ก่อนเริ่มสร้าง Topic
 
 1. ทดสอบ prompt อย่างน้อย 2 ข้อ เช่น:
 
