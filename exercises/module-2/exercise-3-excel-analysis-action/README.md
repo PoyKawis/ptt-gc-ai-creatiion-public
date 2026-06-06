@@ -7,7 +7,7 @@
 ## เตรียมไฟล์ที่ใช้ในแบบฝึกหัด
 
 1. ใช้ไฟล์ตัวอย่างจาก repository นี้:
-   - [../../../files/module-2/CPALL-Monthly-Financial-Report-May2026.xlsx](../../../files/module-2/CPALL-Monthly-Financial-Report-May2026.xlsx)
+   - [../../../files/module-2/PTT-Monthly-Financial-Report-May2026.xlsx](../../../files/module-2/PTT-Monthly-Financial-Report-May2026.xlsx)
 2. ตรวจสอบว่าไฟล์มี 4 sheets ต่อไปนี้:
    - `Summary`
    - `Revenue`
@@ -123,7 +123,7 @@ flowchart TD
     - Report period: `May 2026`
     - Business unit: `Olefins`
     - Preferred report format: `Executive Summary`
-    - Financial data file: อัปโหลดไฟล์ `CPALL-Monthly-Financial-Report-May2026.xlsx` 
+    - Financial data file: อัปโหลดไฟล์ `PTT-Monthly-Financial-Report-May2026.xlsx` 
 2.  กดปิดหน้าต่าง input แล้วกด **Save** เพื่อบันทึก prompt นี้
 3.  กดปุ่ม Test ด้านบนขวาใน Prompt editor เพื่อทดสอบ prompt นี้ด้วยค่าที่ใส่ไว้ในขั้นตอนที่แล้ว
 4.  ตรวจสอบผลลัพธ์ที่ได้ว่ามีส่วนสรุป, KPI summary, Key Risk, และ Notes ครบถ้วนตาม prompt หรือไม่
@@ -167,7 +167,7 @@ flowchart TD
    - Business unit: `Aromatic`
    - Preferred report format: `Executive Summary`
 3. เมื่อระบบถามหาไฟล์ ให้ upload ไฟล์:
-   - `CPALL-Monthly-Financial-Report-May2026.xlsx`
+   - `PTT-Monthly-Financial-Report-May2026.xlsx`
 4. ตรวจว่า Prompt node ส่งผลลัพธ์วิเคราะห์แบบ Markdown กลับมาแสดงในแชตได้
 5. ถ้าผลลัพธ์ว่างหรือไม่สมบูรณ์ ให้ตรวจ input ทั้ง 3 ค่าและไฟล์ที่อัปโหลด แล้วทดสอบใหม่อีกครั้ง
 

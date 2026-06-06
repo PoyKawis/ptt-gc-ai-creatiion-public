@@ -4,7 +4,7 @@
 
 ## Dataset
 
-- `CPALL-Monthly-Financial-Report-May2026.xlsx`
+- `PTT-Monthly-Financial-Report-May2026.xlsx`
 - `CPALL-Monthly-Financial-Report-June2026.xlsx`
 
 ## Knowledge Documents (Exercise 5)
