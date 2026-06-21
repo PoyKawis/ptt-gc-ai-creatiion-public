@@ -29,3 +29,5 @@
 4. เรียน [exercise-4-draft-and-revision-loop](./exercise-4-draft-and-revision-loop/README.md) เพื่อเติม revision loop ลงใน Topic เดิม
 5. ต่อด้วย [exercise-5-hybrid-topic-with-generative](./exercise-5-hybrid-topic-with-generative/README.md) เพื่อเปิดใช้ agent orchestration + knowledge ให้คุยแบบ hybrid ได้โดยไม่ต้องสร้าง Topic ใหม่ในโมดูลนี้
 6. ปิดท้ายด้วย [exercise-6-fallback-and-mini-test](./exercise-6-fallback-and-mini-test/README.md) เพื่อ harden Agent หลังเปิด hybrid conversation ด้วย fallback, escalation, และ mini test cycle
+
+เมื่อทดสอบ Agent v1 และบันทึก failure pattern จาก Module 2 แล้ว ให้ไปต่อที่ [Module 3: Hardening and Deployment Preparation](../module-3/README.md) เพื่อปรับความน่าเชื่อถือ ขอบเขตการตอบ และความพร้อมก่อน publish

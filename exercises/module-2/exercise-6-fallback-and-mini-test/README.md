@@ -208,4 +208,4 @@ flowchart TD
 - [Microsoft Learn: Use system topics](https://learn.microsoft.com/en-us/microsoft-copilot-studio/authoring-system-topics)
 - [Microsoft Learn: Test your agent](https://learn.microsoft.com/en-us/microsoft-copilot-studio/authoring-test-bot)
 
-ขั้นตอนถัดไป → [กลับไปสารบัญ Module 2](../README.md)
+ขั้นตอนถัดไป → [Module 3: Hardening and Deployment Preparation](../../module-3/README.md)
