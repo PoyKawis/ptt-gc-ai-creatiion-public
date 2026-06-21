@@ -1,26 +1,36 @@
 # แบบฝึกหัดที่ 4: เลือก Channel และ Publish Agent
 
-🔑 **ต้องการ M365 Copilot License + สิทธิ์เข้าใช้ Copilot Studio**
+แบบฝึกหัดนี้เป็นส่วนเดียวในชุดขยาย Module 3 ที่ให้กลับไปใช้ Copilot Studio โดยโฟกัสเรื่อง **Channel selection**, **Authentication**, **Publishing** และการตรวจความพร้อมแบบสั้นๆ หลัง publish
 
-แบบฝึกหัดนี้เป็นส่วนเดียวในชุดขยาย Module 3 ที่ให้กลับไปใช้ Copilot Studio โดยโฟกัสเฉพาะเรื่อง **Channel selection**, **Publishing**, และการตรวจความพร้อมแบบสั้นๆ หลัง publish
+## ก่อนเริ่ม: ตรวจความพร้อม
 
-> **⚠️ Note:** ถ้าต้องการทำแบบ hands-on จริง ให้สร้าง **Agent ใหม่** สำหรับการฝึก publish ครั้งนี้ และไม่ใช้ Agent เดิมจาก exercise ก่อนหน้าโดยตรง
+ควรยืนยันก่อนเริ่มว่า
+
+- ผู้เรียนอยู่ใน Copilot Studio environment ที่ **publish ได้** และมีสิทธิ์ maker ที่เหมาะสม
+- tenant มี license และ capacity ที่อนุญาตให้ publish ตามนโยบายขององค์กร
+- ผู้เรียนและผู้สอนมีสิทธิ์ใช้ Microsoft 365 Copilot และองค์กรอนุญาตให้ publish หรืออนุมัติ Agent ใน Microsoft 365 Copilot
+- ใช้เฉพาะข้อมูลตัวอย่าง ห้ามใส่ข้อมูลการเงินจริง ข้อมูล HR หรือข้อมูลอ่อนไหวลงใน Agent หรือบทสนทนา
+
+> **⚠️ Note:** Copilot Studio trial ใช้สร้างและทดสอบ Agent ใน test panel ได้ แต่ใช้ publish ไม่ได้ หาก publish ไม่ได้ ให้จับภาพ screenshot และติดต่อผู้ดูแล environment แทนการพยายามหลีกเลี่ยงนโยบายที่องค์กรตั้งไว้
+
+> **⚠️ Note:** สำหรับ hands-on นี้ ให้สร้าง **Agent ใหม่** สำหรับการฝึก publish และไม่ใช้ Agent เดิมจาก exercise ก่อนหน้าโดยตรง
 
 ```mermaid
 flowchart LR
-    A[Create new agent] --> B[Review scope and instruction]
-    B --> C[Choose target channel]
+    A[Create new agent] --> B[Test in authoring]
+    B --> C[Choose channel and authentication]
     C --> D[Publish]
-    D --> E[Test in target channel]
-    E --> F[Review readiness notes]
+    D --> E[Configure Microsoft 365 Copilot]
+    E --> F[Test latest published version]
+    F --> G[Review readiness notes]
 ```
 
 ---
 
-## Practice 1: เตรียม Agent ใหม่สำหรับการฝึก Publish
+## Practice 1: เตรียมและทดสอบ Agent ใหม่ก่อน Publish
 
 1. เปิด Copilot Studio
-2. สร้าง Agent ใหม่แบบเรียบง่ายสำหรับการทดลอง publish
+2. สร้าง Agent ใหม่สำหรับการทดลอง publish
 3. ตั้งชื่อ Agent เช่น
 
    ```text
@@ -35,73 +45,74 @@ flowchart LR
    ```
 
 5. กด **Save**
+6. เปิด **Test agent** panel และลองถาม 1 คำถามด้านการเงิน กับ 1 คำถามที่ไม่เกี่ยวข้องกับการเงิน
+      - คำถามด้านการเงิน เช่น
+         ```text
+         ช่วยอธิบาย EBITDA แบบสั้นๆ
+         ```
+      - คำถามที่ไม่เกี่ยวข้อง เช่น
+         ```text
+         ช่วยตอบเรื่องสิทธิ์ลางานให้หน่อย
+         ```
+1. ตรวจว่า Agent ตอบเรื่องที่อยู่ใน scope ได้ และบอกขอบเขตของตนเองอย่างสุภาพเมื่อคำถามอยู่นอก scope หากยังไม่ได้ผล ให้ปรับ instruction แล้วทดสอบซ้ำก่อน publish
+
+> **💡 Tip:** Test agent panel เหมาะสำหรับตรวจการทำงาน ระหว่างสร้าง Agent แต่ยังไม่สามารถยืนยันการทำงานจริงใน channel ที่ publish จริงได้นะครับ
 
 ---
 
-## Practice 2: เลือก Channel ที่เหมาะกับโจทย์
+## Practice 2: เลือก Channel และวิธีเข้าถึง
 
-1. ให้ผู้เรียนคุยกันก่อนว่า use case นี้เหมาะกับช่องทางใดมากกว่า
-   - Teams
-   - Web
-2. ใช้คำถามช่วยคิด
-   - ผู้ใช้ตัวจริงอยู่ในช่องทางไหนอยู่แล้ว
-   - ต้องการ demo ภายในองค์กรหรือภายนอก
-   - ต้องการความสะดวกในการเข้าถึงหรือความง่ายในการทดลอง
-3. ให้แต่ละทีมเขียนเหตุผลสั้นๆ ใน Teams chat ว่าเลือก channel ใด และเพราะอะไร
+เปรียบเทียบทางเลือกก่อน deploy
 
----
+| Channel | เหมาะกับ | ขอบเขตของแบบฝึกหัดนี้ |
+|---|---|---|
+| **Microsoft 365 Copilot** | ผู้ใช้ภายในองค์กรที่ลงชื่อเข้าใช้ด้วยบัญชีงาน และมีสิทธิ์ใช้ Microsoft 365 Copilot | **เส้นทาง hands-on หลัก** ผู้เรียนทุกคนจะ publish และทดสอบด้วยตนเองใน Microsoft 365 Copilot |
+| **Demo website** | การทดสอบกับเพื่อนร่วมทีมหรือ stakeholder ภายใน | ใช้สำหรับการสาธิตเท่านั้น URL ไม่ใช่ production และห้ามส่งให้ลูกค้า |
+| **Custom/live website** | Agent ที่พร้อมให้ผู้ใช้จริงเข้าถึงบนเว็บไซต์ | อยู่นอกขอบเขต เพราะต้องออกแบบ web integration และ security เพิ่มเติม |
 
-## Practice 3: Publish Agent
-
-1. ไปที่หน้า Overview ของ Agent
-2. กด **Publish**
-3. รอจนระบบแสดงว่า publish สำเร็จ
-4. บันทึกว่า publish ครั้งนี้ตั้งใจใช้ channel ใดเป็นหลัก
-
-> **💡 Tip:** ในห้องเรียน ไม่จำเป็นต้องเชื่อมหลาย channel พร้อมกัน จุดสำคัญคือเข้าใจลำดับการ publish และรู้ว่าจะทดสอบที่ไหน
+1. สำหรับ hands-on นี้ ให้เลือก **Microsoft 365 Copilot** เป็น target channel
+2. เลือกใช้ **Authenticate with Microsoft** สำหรับเส้นทาง Microsoft 365 Copilot
+3. ห้ามเลือก **No authentication** สำหรับ Agent นี้ และห้ามใช้ข้อมูลการเงินจริงหรือ HR จริงในการทดสอบ
 
 ---
 
-## Practice 4: ทดสอบหลัง Publish
+## Practice 3: ตั้งค่า Authentication และ Publish Agent
 
-1. เปิด channel เป้าหมายที่เลือกไว้
-2. ลองถามอย่างน้อย 3 prompt
+1. เปิด **Settings** ของ Agent แล้วไปที่ **Security** > **Authentication**
+2. เลือก **Authenticate with Microsoft** แล้วกด **Save**
+3. เปิด Agent สำหรับแก้ไข แล้วกด **Publish**
+4. ยืนยันการ publish และรอจนระบบแสดงว่า publish สำเร็จ
+5. หาก publish ไม่สำเร็จ ให้บันทึก status หรือ error message และติดต่อผู้ดูแล environment
 
-   ```text
-   ช่วยอธิบาย EBITDA แบบสั้นๆ
-   ```
-
-   ```text
-   ช่วยสรุปว่ารายงานการเงินแบบ executive summary เหมาะกับใคร
-   ```
-
-   ```text
-   ช่วยตอบเรื่องสิทธิ์ลางานให้หน่อย
-   ```
-
-3. ตรวจว่า Agent
-   - ตอบในเรื่องที่อยู่ใน scope ได้
-   - ปฏิเสธเรื่องนอก scope ได้อย่างสุภาพ
-   - ใช้งานได้จริงใน channel ที่ publish ไป
+> **💡 Tip:** การเปลี่ยน authentication จะมีผลกับผู้ใช้หลัง publish แล้วเท่านั้น
 
 ---
 
-## Practice 5: Readiness Notes
+## Practice 4: เชื่อมต่อและทดสอบ Agent ใน Microsoft 365 Copilot
 
-1. ให้ทีมสรุป readiness note สั้นๆ 3 ข้อ
+1. เปิดเมนู **Channels** ของ Agent
+2. เลือก **Teams and Microsoft 365 Copilot**
+3. ในส่วน **Turn on Microsoft 365** ให้ยืนยันว่าเลือก **Make agent available in Microsoft 365 Copilot** แล้ว
+4. กด **Add channel** เพื่อเชื่อมต่อ Agent กับ Microsoft 365 Copilot
+5. หน้าตั้งค่านี้ใช้ร่วมกับ Teams ตามชื่อใน Copilot Studio แต่สำหรับแบบฝึกหัดนี้ ให้ใช้งานและทดสอบ Agent ใน **Microsoft 365 Copilot** เท่านั้น
+6. หากองค์กรกำหนดให้มีการอนุมัติ ให้ส่ง Agent เพื่อให้ Microsoft 365 admin review ก่อนเริ่มทดสอบ
+7. หลัง Agent พร้อมใช้งาน ให้เปิด Microsoft 365 Copilot เริ่มบทสนทนาใหม่ พิมพ์ `@` แล้วเลือก Agent ของตนเอง จากนั้นจึงถามคำถามทดสอบ
+8. ทดสอบด้วยบัญชีของผู้สร้าง Agent ก่อน และห้ามเปิดให้ผู้ใช้วงกว้าง เว้นแต่ผู้สอนหรือผู้ดูแลอนุญาต
 
-   ```text
-   - Target channel:
-   - สิ่งที่พร้อมแล้ว:
-   - สิ่งที่ต้องปรับก่อน demo จริง:
-   ```
+> **⚠️ Note:** หาก Agent ยังไม่ปรากฏใน Microsoft 365 Copilot อาจกำลังรอการอนุมัติหรือถูกจำกัดด้วยนโยบาย tenant ให้บันทึกปัญหาและติดต่อ Microsoft 365 admin
 
-2. แชร์ note นี้ใน Teams หรือสรุปหน้าชั้น
-
----
 
 ## สรุป
 
-ในแบบฝึกหัดนี้ คุณได้ฝึกเลือก channel, publish Agent, และตรวจความพร้อมเบื้องต้นหลัง publish โดยใช้ Agent ใหม่สำหรับการทดลองอย่างปลอดภัย
+ในแบบฝึกหัดนี้ คุณได้ทดสอบ Agent ก่อน publish เลือก Microsoft 365 Copilot และ authentication ที่เหมาะสม publish และเชื่อมต่อ Agent กับ Microsoft 365 Copilot จากนั้นทดสอบ version ที่ publish จริง
+
+## อ่านเพิ่มเติม
+
+- [Microsoft Learn: Publish and deploy your agent](https://learn.microsoft.com/microsoft-copilot-studio/publication-fundamentals-publish-channels)
+- [Microsoft Learn: Connect and configure an agent for Teams and Microsoft 365](https://learn.microsoft.com/microsoft-copilot-studio/publication-add-bot-to-microsoft-teams)
+- [Microsoft Learn: Set up Agent Store in Microsoft 365 Copilot](https://learn.microsoft.com/microsoft-365/copilot/copilot-agent-store)
+- [Microsoft Learn: Configure user authentication in Copilot Studio](https://learn.microsoft.com/microsoft-copilot-studio/configuration-end-user-authentication)
+- [Microsoft Learn: Copilot Studio licensing FAQ](https://learn.microsoft.com/microsoft-copilot-studio/faq-billing-licensing)
+- [Microsoft Learn: Publish an agent to a live or demo website](https://learn.microsoft.com/microsoft-copilot-studio/publication-connect-bot-to-web-channels)
 
 ขั้นตอนถัดไป → [นิยาม Measurement Mindset และ UAT readiness](../exercise-5-measurement-mindset/README.md)
