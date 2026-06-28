@@ -8,10 +8,9 @@
 1. [Module 1 - Foundations: AI and Agents](./exercises/module-1/README.md)
 2. [Module 2 - Copilot Studio Core Build](./exercises/module-2/README.md)
 3. [Module 3 - Hardening and Deployment Preparation](./exercises/module-3/README.md)
-4. [Module 3.5 - Recap & Tutoring Session](./exercises/module-3-5/README.md)
-5. Module 4 - Core Engineering Day: RAG and Actions
-6. Module 5 - MVP Production
-7. Module 6 - Final Project Presentation Day
+4. [Module 4 - Core Engineering Day: RAG and Actions](./exercises/module-4/README.md)
+5. Module 5 - MVP Production
+6. Module 6 - Final Project Presentation Day
 
 ## Exercise Index
 
@@ -30,8 +29,6 @@
 | module-3 | exercise-3-hardening-patterns | Hardening Patterns สำหรับ Agent | [Open](./exercises/module-3/exercise-3-hardening-patterns/README.md) |
 | module-3 | exercise-4-channel-and-publishing | เลือก Channel และ Publish Agent | [Open](./exercises/module-3/exercise-4-channel-and-publishing/README.md) |
 | module-3 | exercise-5-measurement-mindset | นิยาม Measurement Mindset และ UAT Readiness | [Open](./exercises/module-3/exercise-5-measurement-mindset/README.md) |
-| module-3-5 | exercise-1-missing-info-detective | Missing Info Detective: ปรับข้อความเก็บข้อมูลให้ชัดเจน | [Open](./exercises/module-3-5/exercise-1-missing-info-detective/README.md) |
-| module-3-5 | exercise-2-echo-confirmation | Echo Confirmation: ยืนยันข้อมูลก่อนวิเคราะห์ | [Open](./exercises/module-3-5/exercise-2-echo-confirmation/README.md) |
-| module-3-5 | exercise-3-fallback-and-escalation | Fallback และ Escalation สำหรับ Agent v1 | [Open](./exercises/module-3-5/exercise-3-fallback-and-escalation/README.md) |
-| module-3-5 | exercise-4-dont-guess | Don't Guess: ตอบจาก Knowledge พร้อม Citation | [Open](./exercises/module-3-5/exercise-4-dont-guess/README.md) |
-| module-3-5 | exercise-5-chat-friendly-response | Make It Chat-Friendly: ปรับคำตอบให้อ่านง่าย | [Open](./exercises/module-3-5/exercise-5-chat-friendly-response/README.md) |
+| module-4 | exercise-1-hybrid-topic-with-generative | สร้าง Dual-Domain Generative Topic ด้วย Create Generative Answer Node | [Open](./exercises/module-4/exercise-1-hybrid-topic-with-generative/README.md) |
+| module-4 | exercise-2-add-outlook-mail-mcp-tool | เพิ่ม Outlook Mail MCP เป็น Tool ให้ Agent | [Open](./exercises/module-4/exercise-2-add-outlook-mail-mcp-tool/README.md) |
+| module-4 | exercise-3-agent-flow-send-email-action | เพิ่ม Agent Flow สำหรับส่งอีเมลรายงาน | [Open](./exercises/module-4/exercise-3-agent-flow-send-email-action/README.md) |
